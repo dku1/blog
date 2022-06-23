@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
+
+    <link rel="stylesheet" href="/css/admin/styles.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -33,19 +35,9 @@
     </nav>
     <!-- /.navbar -->
 
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    @include('admin.layouts.sub-layouts.sidebar')
 
-        <!-- Sidebar -->
-        <div class="sidebar">
-
-        </div>
-        <!-- /.sidebar -->
-    </aside>
-
-    <!-- Content Wrapper. Contains page content -->
     @yield('content')
-    <!-- /.content-wrapper -->
 
     <footer class="main-footer">
         <strong>Blog</strong>

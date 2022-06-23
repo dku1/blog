@@ -24,6 +24,19 @@ Route::group([
     Route::group(['namespace' => 'Main'], function (){
        Route::get('/', 'IndexController');
     });
+
+    Route::group([
+        'namespace' => 'Category',
+        'prefix' => 'categories',
+    ], function (){
+        Route::get('/', 'IndexController')->name('admin.categories.index');
+        Route::get('create', 'CreateController')->name('admin.categories.create');
+        Route::post('store', 'StoreController')->name('admin.categories.store');
+        Route::get('show/{category}', 'ShowController')->name('admin.categories.show');
+        Route::get('edit/{category}', 'EditController')->name('admin.categories.edit');
+        Route::patch('update/{category}', 'UpdateController')->name('admin.categories.update');
+        Route::delete('delete/{category}', 'DeleteController')->name('admin.categories.delete');
+    });
 });
 
 Auth::routes();
