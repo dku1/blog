@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
 Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     'prefix' => 'admin',
-    'middleware' => ['auth', 'is_admin'],
+    'middleware' => ['auth', 'is_admin', 'verified'],
 ], function (){
 
     Route::group(['namespace' => 'Main'], function (){
@@ -81,4 +82,4 @@ Route::group([
 
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
