@@ -91,6 +91,9 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center paginate">
+                            {{ $tags->links('pagination::bootstrap-4') }}
+                        </div>
                     </div>
                 </div>
             </div>

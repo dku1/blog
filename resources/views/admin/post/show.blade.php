@@ -59,10 +59,38 @@
                                         <td>Название</td>
                                         <td>{{ $post->title }}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Категория</td>
+                                        <td>{{ $post->category->title }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Опубликован</td>
+                                        <td>{{ $post->created_at->format('d-m-Y') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Тэги</td>
+                                        <td>
+                                            <select class="select2" multiple="multiple" name="tag_ids[]"
+                                                    style="width: 100%;" data-select2-id="23" tabindex="-1"
+                                                    aria-hidden="true">
+                                                @foreach($post->tags as $tag)
+                                                    <option value="{{ $tag->id }}" selected>
+                                                        {{ $tag->title }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        <h4 class="text-center">Превью</h4>
+                        <img src="{{ asset('storage/' . $post->preview_image) }}" alt="Превью"
+                             class="w-100 mt-3" style="height: 350px">
+                        <h4 class="text-center mt-3">Главное изображение</h4>
+                        <img src="{{ asset('storage/' . $post->main_image) }}" alt="Превью"
+                             class="w-100 mt-3" style="height: 350px">
                     </div>
                     <div class="col-7">
                         {!! $post->content  !!}

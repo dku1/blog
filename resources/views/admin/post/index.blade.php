@@ -32,7 +32,7 @@
                     <div class="col-12 d-flex justify-content-start mb-3">
                         <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Добавить</a>
                     </div>
-                    <div class="col-4">
+                    <div class="col-5">
                         <div class="card">
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-hover text-nowrap">
@@ -90,6 +90,9 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                        <div class="d-flex justify-content-center paginate">
+                            {{ $posts->links('pagination::bootstrap-4') }}
                         </div>
                     </div>
                 </div>

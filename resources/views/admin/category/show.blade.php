@@ -59,6 +59,10 @@
                                         <td>Название</td>
                                         <td>{{ $category->title }}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Количество постов</td>
+                                        <td>{{ $category->posts->count() }}</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

@@ -88,6 +88,9 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center paginate">
+                            {{ $categories->links('pagination::bootstrap-4') }}
+                        </div>
                     </div>
                 </div>
             </div>
