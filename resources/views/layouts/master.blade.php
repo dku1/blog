@@ -16,28 +16,41 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
     gtag('config', 'UA-4481610-59');
 </script>
 
-<!-- Yandex.RTB --> <script>window.yaContextCb=window.yaContextCb||[]</script><script src="https://yandex.ru/ads/system/context.js" async></script>
+<!-- Yandex.RTB -->
+<script>window.yaContextCb = window.yaContextCb || []</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
 
 <div class="container">
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
-                <a class="text-muted" href="#">Subscribe</a>
+                @if(auth()->check())
+                <a class="text-muted" href="#">{{ auth()->user()->name }}</a>
+                @endif
             </div>
             <div class="col-4 text-center">
                 <a class="blog-header-logo text-dark" href="#">Large</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
-                <a class="text-muted" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
-                </a>
-                <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+                @if(auth()->check())
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button class="btn btn-sm btn-outline-secondary">Выход</button>
+                    </form>
+                @else
+                    <a class="btn btn-sm btn-outline-secondary mr-3" href="{{ route('login') }}">Вход</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="{{ route('register') }}">Регистрация</a>
+                @endif
             </div>
         </div>
     </header>
@@ -62,7 +75,8 @@
     <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
             <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
-            <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>
+            <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
+                efficiently about what's most interesting in this post's contents.</p>
             <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
         </div>
     </div>
@@ -76,10 +90,12 @@
                         <a class="text-dark" href="#">Featured post</a>
                     </h3>
                     <div class="mb-1 text-muted">Nov 12</div>
-                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to
+                        additional content.</p>
                     <a href="#">Continue reading</a>
                 </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb"
+                     alt="Card image cap">
             </div>
         </div>
         <div class="col-md-6">
@@ -90,10 +106,12 @@
                         <a class="text-dark" href="#">Post title</a>
                     </h3>
                     <div class="mb-1 text-muted">Nov 11</div>
-                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to
+                        additional content.</p>
                     <a href="#">Continue reading</a>
                 </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb"
+                     alt="Card image cap">
             </div>
         </div>
     </div>
@@ -102,7 +120,8 @@
 @yield('content')
 
 <footer class="blog-footer">
-    <p>Blog template built for <a rel="nofollow noopener" target="_blank" href="https://getbootstrap.com/">Bootstrap</a> by <a rel="nofollow noopener" target="_blank" href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p>Blog template built for <a rel="nofollow noopener" target="_blank" href="https://getbootstrap.com/">Bootstrap</a>
+        by <a rel="nofollow noopener" target="_blank" href="https://twitter.com/mdo">@mdo</a>.</p>
     <p>
         <a href="#">Back to top</a>
     </p>
@@ -111,7 +130,9 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
 <script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/holder.min.js"></script>
