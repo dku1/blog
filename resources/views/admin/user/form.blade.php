@@ -60,14 +60,19 @@
                             <input type="email" class="form-control" name="email" placeholder="Email"
                                    value="{{ $user->email ?? old('email') }}">
                         </div>
-                        @if(!isset($user))
-                        @error('password')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @isset($user)
+                            <input type="text" name="user_id" value="{{ $user->id }}" hidden>
+                        @endisset
                         <div class="form-group">
-                            <input type="password" class="form-control" name="password" placeholder="Пароль">
+                            <label>Роль</label>
+                            <select class="form-control" name="role">
+                                @foreach($roles as $id => $role)
+                                    <option value="{{ $id }}" @if(isset($user) and $user->role == $id) selected @endif>
+                                        {{ $role }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
-                        @endif
                         <div class="form-group">
                             <button class="btn btn-success">
                                 @isset($user)

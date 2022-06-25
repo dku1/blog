@@ -20,6 +20,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
 Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     'prefix' => 'admin',
+    'middleware' => ['auth', 'is_admin'],
 ], function (){
 
     Route::group(['namespace' => 'Main'], function (){
