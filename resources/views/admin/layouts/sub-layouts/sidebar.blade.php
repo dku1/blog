@@ -18,6 +18,11 @@
                     Посты
                 </a>
             </li>
+            <li class="nav-item p-3">
+                <a href="{{ route('admin.users.index') }}" class="nav-link">
+                    Пользователи
+                </a>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar -->

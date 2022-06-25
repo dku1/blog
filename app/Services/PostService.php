@@ -38,9 +38,11 @@ class PostService
             $data['main_image'] = substr($request->file('main_image')->store('/public/images/post/main'), 7);
         }
 
-        if (isset($data['tag_ids'])) {
+        if (!empty($data['tag_ids'])) {
             $tagIds = $data['tag_ids'];
             unset($data['tag_ids']);
+        }else{
+            $post->tags()->detach();
         }
 
         $post->update($data);
