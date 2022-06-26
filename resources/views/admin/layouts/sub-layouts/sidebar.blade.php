@@ -4,6 +4,11 @@
     <div class="sidebar">
         <ul class="nav nav-treeview d-flex justify-content-center">
             <li class="nav-item p-3">
+                <a href="{{ route('admin.index') }}" class="nav-link">
+                    Главная
+                </a>
+            </li>
+            <li class="nav-item p-3">
                 <a href="{{ route('admin.categories.index') }}" class="nav-link">
                     Категории
                 </a>
