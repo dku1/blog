@@ -15,23 +15,47 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
-   Route::get('/', 'IndexController');
+    Route::get('/', 'IndexController')->name('index');
+});
+
+Route::group([
+    'namespace' => 'App\Http\Controllers\Personal',
+    'prefix' => 'personal',
+    'middleware' => 'auth',
+], function () {
+
+    Route::group(['namespace' => 'Main'], function () {
+        Route::get('main', 'IndexController')->name('personal.main.index');
+    });
+
+    Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function () {
+        Route::get('/', 'IndexController')->name('personal.liked.index');
+        Route::delete('{post}', 'DeleteController')->name('personal.liked.delete');
+    });
+
+    Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function () {
+        Route::get('/', 'IndexController')->name('personal.comment.index');
+        Route::get('edit/{comment}', 'EditController')->name('personal.comment.edit');
+        Route::patch('update/{comment}', 'UpdateController')->name('personal.comment.update');
+        Route::delete('{comment}', 'DeleteController')->name('personal.comment.delete');
+    });
+
 });
 
 Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
     'prefix' => 'admin',
     'middleware' => ['auth', 'is_admin'],
-], function (){
+], function () {
 
-    Route::group(['namespace' => 'Main'], function (){
-       Route::get('/', 'IndexController')->name('admin.index');
+    Route::group(['namespace' => 'Main'], function () {
+        Route::get('/', 'IndexController')->name('admin.index');
     });
 
     Route::group([
         'namespace' => 'Category',
         'prefix' => 'categories',
-    ], function (){
+    ], function () {
         Route::get('/', 'IndexController')->name('admin.categories.index');
         Route::get('create', 'CreateController')->name('admin.categories.create');
         Route::post('store', 'StoreController')->name('admin.categories.store');
@@ -44,7 +68,7 @@ Route::group([
     Route::group([
         'namespace' => 'Tag',
         'prefix' => 'tags',
-    ], function (){
+    ], function () {
         Route::get('/', 'IndexController')->name('admin.tags.index');
         Route::get('create', 'CreateController')->name('admin.tags.create');
         Route::post('store', 'StoreController')->name('admin.tags.store');
@@ -57,7 +81,7 @@ Route::group([
     Route::group([
         'namespace' => 'Post',
         'prefix' => 'posts',
-    ], function (){
+    ], function () {
         Route::get('/', 'IndexController')->name('admin.posts.index');
         Route::get('create', 'CreateController')->name('admin.posts.create');
         Route::post('store', 'StoreController')->name('admin.posts.store');
@@ -70,7 +94,7 @@ Route::group([
     Route::group([
         'namespace' => 'User',
         'prefix' => 'users',
-    ], function (){
+    ], function () {
         Route::get('/', 'IndexController')->name('admin.users.index');
         Route::get('create', 'CreateController')->name('admin.users.create');
         Route::post('store', 'StoreController')->name('admin.users.store');

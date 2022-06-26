@@ -35,7 +35,7 @@
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
                 @if(auth()->check())
-                <a class="text-muted" href="#">{{ auth()->user()->name }}</a>
+                <a class="text-muted" href="{{ route('personal.main.index') }}">{{ auth()->user()->name }}</a>
                 @endif
             </div>
             <div class="col-4 text-center">
@@ -43,6 +43,9 @@
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
                 @if(auth()->check())
+                    @if(auth()->user()->isAdmin())
+                        <a href="{{ route('admin.index') }}" class="btn btn-sm btn-outline-secondary mr-3">Панель администратора</a>
+                    @endif
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button class="btn btn-sm btn-outline-secondary">Выход</button>
