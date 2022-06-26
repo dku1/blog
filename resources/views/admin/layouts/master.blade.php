@@ -38,7 +38,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-2">
             <li class="nav-item">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf

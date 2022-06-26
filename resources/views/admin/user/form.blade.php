@@ -12,7 +12,7 @@
                         @isset($user)
                             <h1 class="m-0">Редактирование пользователя {{ $user->name }}</h1>
                         @else
-                            <h1 class="m-0">Добавление пользователя</h1>
+                            <h1 class="m-0">Создание пользователя</h1>
                         @endisset
                     </div><!-- /.col -->
                     <div class="col-sm-6">
@@ -78,7 +78,7 @@
                                 @isset($user)
                                     Сохранить
                                 @else
-                                    Добавить
+                                    Создать
                                 @endisset
                             </button>
                         </div>

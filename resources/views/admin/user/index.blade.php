@@ -27,7 +27,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-start mb-3">
-                        <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Добавить</a>
+                        <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Создать</a>
                     </div>
                     <div class="col-4">
                         <div class="card">

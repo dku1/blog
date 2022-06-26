@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class PasswordMail extends Mailable
+class PasswordMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +28,7 @@ class PasswordMail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): static
     {
         return $this->markdown('mail.user.password');
     }
